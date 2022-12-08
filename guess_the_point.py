@@ -61,7 +61,7 @@ class Rectangle:
         t.goto(point1[0], point1[1])
         t.up()
         t.goto(user_point_x, user_point_y)
-        t.dot(2, "red")
+        t.dot(7, "red")
 
         sleep(5)
 
