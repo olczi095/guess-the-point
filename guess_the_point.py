@@ -1,4 +1,6 @@
 from random import randint
+import turtle
+from time import sleep
 
 
 def game():
@@ -7,15 +9,17 @@ def game():
     Rules:
     1. At first the program shows coordinates of the rectangle to the user (they are randomly selected),
     then the user has to guess the point from inside the rectangle by enter the coordinates of the point.
-    2. The coordinates of the points can be randomized (and guessing) from the range 0-100.
+    2. The coordinates of the points can be randomized (and guessing) from the range -100:100.
     """
 
     random_rectangle = Rectangle()
     print("Welcome to the game! Your task is to choose the point that falls in the rectangle.")
     print(f"The coordinates of our rectangle are: {random_rectangle.show_both_points()}\n")
-    coordinate_x = int(input("Type first coordinate:\n>>> "))
-    coordinate_y = int(input("Type second coordinate:\n>>> "))
+    coordinate_x = int(input("Type first coordinate from the scope -100:100 :\n>>> "))
+    coordinate_y = int(input("Type second coordinate from the scope -100:100 :\n>>> "))
+    random_rectangle.draw_rectangle_and_point(coordinate_x, coordinate_y)
     user_game = Game((coordinate_x, coordinate_y))
+    print("\n")
     print(user_game.check_the_point(random_rectangle.show_both_points()))
 
 
@@ -23,21 +27,43 @@ class Rectangle:
     # class for choose two random points of the rectangle
 
     def __init__(self):
-        self.point1 = randint(0, 10), randint(0, 10)
+        self.point1 = randint(-100, 100), randint(-100, 100)
         self.point2 = self.setting_point2()
 
     def setting_point2(self):
-        point2_x = randint(0, 10)
-        point2_y = randint(0, 10)
+        point2_x = randint(-100, 100)
+        point2_y = randint(-100, 100)
         while point2_x == self.point1[0]:
-            point2_x = randint(0, 10)
+            point2_x = randint(-100, 100)
         while point2_y == self.point1[1]:
-            point2_y = randint(0, 10)
+            point2_y = randint(-100, 100)
         point2 = point2_x, point2_y
         return point2
 
     def show_both_points(self):
         return self.point1, self.point2
+
+    def draw_rectangle_and_point(self, user_point_x, user_point_y):
+        screen = turtle.Screen()
+        screen.setup(500, 500)
+        screen.title('RECTANGLE')
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.up()
+        t.pensize(3)
+        point1 = self.point1[0], self.point1[1]
+        point2 = self.point2[0], self.point2[1]
+        t.goto(point1[0], point1[1])
+        t.down()
+        t.goto(point2[0], point1[1])
+        t.goto(point2[0], point2[1])
+        t.goto(point1[0], point2[1])
+        t.goto(point1[0], point1[1])
+        t.up()
+        t.goto(user_point_x, user_point_y)
+        t.dot(2, "red")
+
+        sleep(5)
 
 
 class Game:
