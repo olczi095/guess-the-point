@@ -23,16 +23,21 @@ class Rectangle:
     # class for choose two random points of the rectangle
 
     def __init__(self):
-        self.point_1 = randint(0, 100), randint(0, 100)
-        self.point_2 = randint(0, 100), randint(0, 100)
+        self.point1 = randint(0, 10), randint(0, 10)
+        self.point2 = self.setting_point2()
 
-    def validation_points(self):
-        while self.point_2 == self.point_1:
-            self.point_2 = randint(0, 100)
-        return self.point_2
+    def setting_point2(self):
+        point2_x = randint(0, 10)
+        point2_y = randint(0, 10)
+        while point2_x == self.point1[0]:
+            point2_x = randint(0, 10)
+        while point2_y == self.point1[1]:
+            point2_y = randint(0, 10)
+        point2 = point2_x, point2_y
+        return point2
 
     def show_both_points(self):
-        return self.point_1, self.validation_points()
+        return self.point1, self.point2
 
 
 class Game:
