@@ -78,7 +78,7 @@ class Game:
         scope_x = min(point1[0], point2[0]), max(point1[0], point2[0])
         scope_y = min(point1[1], point2[1]), max(point1[1], point2[1])
 
-        if scope_x[0] <= self.user_point[0] <= scope_x[1] and scope_y[0] <= self.user_point[1] <= scope_y[1]:
+        if scope_x[0] < self.user_point[0] < scope_x[1] and scope_y[0] < self.user_point[1] < scope_y[1]:
             return True
         else:
             return False
