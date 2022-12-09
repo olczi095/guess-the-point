@@ -10,4 +10,4 @@ The game idea comes from the [Advanced Python Programming: Build 10 OOP Applicat
 I wrote it myself from scratch before checking the code from the course, mainly to practice OOP. 
 
 ## Libraries and Technologies 
-Python 3.11.0
+Python 3.10
