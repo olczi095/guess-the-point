@@ -15,12 +15,24 @@ def game():
     random_rectangle = Rectangle()
     print("Welcome to the game! Your task is to choose the point that falls in the rectangle.")
     print(f"The coordinates of our rectangle are: {random_rectangle.show_both_points()}\n")
-    coordinate_x = int(input("Type first coordinate from the scope -200:200 :\n>>> "))
-    coordinate_y = int(input("Type second coordinate from the scope -200:200 :\n>>> "))
+    coordinate_x = Coordinate.validation('first')
+    coordinate_y = Coordinate.validation('second')
     random_rectangle.draw_rectangle_and_point(coordinate_x, coordinate_y)
     user_game = Game((coordinate_x, coordinate_y))
     print("\n")
     print(user_game.check_the_point(random_rectangle.show_both_points()))
+
+
+class Coordinate:
+
+    @staticmethod
+    def validation(number_of_coordinate_in_string):
+        while True:
+            coordinate = input(f"Type {number_of_coordinate_in_string} coordinate from the scope -200:200: ")
+            if coordinate.isdigit():
+                return int(coordinate)
+            else:
+                print("You type incorrect value!")
 
 
 class Rectangle:
