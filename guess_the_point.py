@@ -29,10 +29,16 @@ class Coordinate:
     def validation(number_of_coordinate_in_string):
         while True:
             coordinate = input(f"Type {number_of_coordinate_in_string} coordinate from the scope -200:200: ")
-            if coordinate.isdigit():
-                return int(coordinate)
-            else:
-                print("You type incorrect value!")
+            try:
+                coordinate = int(coordinate)
+                if -200 < coordinate < 200:
+                    return coordinate
+                else:
+                    print("You entered the wrong value!")
+                    continue
+            except ValueError:
+                print("You entered the wrong value!")
+                continue
 
 
 class Rectangle:
