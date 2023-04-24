@@ -3,17 +3,11 @@ A simple game in which the user must type the point falls in the rectangle.
 
 ## Installation
 1. Clone the repository
-```bash
-  git clone https://github.com/olczi095/guess-the-point.git
-```
+  <pre><b>git clone https://github.com/olczi095/guess-the-point.git</b></pre>
 2. Change the directory
-```bash
-  cd guess-the-point
-```
+  <pre><b>cd guess-the-point</b></pre>
 3. Run the game
-```bash
-  python3 guess_the_point.py
-```
+  <pre><b>python guess_the_point.py</b></pre>
 
 ## General rules
 1. At first the program shows coordinates of the rectangle to the user (they are randomly selected), then the user has to guess the point from inside the rectangle by enter the coordinates of the point.
